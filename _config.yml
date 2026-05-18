@@ -22,7 +22,7 @@ defaults:
     values:
       layout: default
 
-permalink: /:categories/:title:output_ext
+permalink: pretty
 
 exclude:
   - README.md

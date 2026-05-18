@@ -19,7 +19,7 @@
         <ul class="subnav">
           {% capture overview_url %}/categories/{{ category.folder }}/{% endcapture %}
           <li class="subnav-item">
-            <a href="{{ '/categories/' | append: category.folder | relative_url }}" class="subnav-link {% if page.url == overview_url %}active{% endif %}">
+            <a href="{{ '/categories/' | append: category.folder | append: '/' | relative_url }}" class="subnav-link {% if page.url == overview_url %}active{% endif %}">
               Vue d'ensemble
             </a>
           </li>

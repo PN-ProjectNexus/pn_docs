@@ -3,15 +3,17 @@
 
   // Theme toggle
   const themeToggle = document.getElementById('theme-toggle');
-  const storedTheme = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', storedTheme);
+  if (themeToggle) {
+    const storedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', storedTheme);
 
-  themeToggle.addEventListener('click', function () {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
+    themeToggle.addEventListener('click', function () {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  }
 
   // Sidebar collapse
   const toggles = document.querySelectorAll('.nav-toggle');
@@ -31,6 +33,23 @@
     }
   });
 
+  // Mobile hamburger
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  if (hamburger && sidebar) {
+    hamburger.addEventListener('click', function () {
+      sidebar.classList.toggle('open');
+    });
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function (e) {
+      if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+        if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+          sidebar.classList.remove('open');
+        }
+      }
+    });
+  }
+
   // Search
   var searchIndex = [];
   var searchInput = document.getElementById('search-input');
@@ -45,22 +64,28 @@
       var title = el.textContent.trim();
       var url = el.getAttribute('href');
       if (!url || seen[url] || url === '#' || url === '') return;
+      
       var catEl = el.closest('.nav-item');
       var catBtn = catEl ? catEl.querySelector('.nav-toggle') : null;
       var catName = '';
       if (catBtn) {
-        var raw = catBtn.textContent;
-        // Clean: keep only letters, digits, spaces
-        catName = raw.replace(/[^a-zA-Z0-9\u00C0-\u024F\s]/g, '').trim();
+        var clone = catBtn.cloneNode(true);
+        var icon = clone.querySelector('.nav-icon');
+        var chevron = clone.querySelector('.chevron');
+        if (icon) icon.remove();
+        if (chevron) chevron.remove();
+        catName = clone.textContent.trim();
       }
+      
       seen[url] = true;
       searchIndex.push({ title: title, url: url, category: catName });
     });
+    
     // Also index page headings as extra results
     document.querySelectorAll('.content h2, .content h3').forEach(function (h) {
       var id = h.getAttribute('id');
       if (!id) return;
-      var url = window.location.pathname + '#' + id;
+      var url = window.location.pathname + (window.location.pathname.endsWith('/') ? '' : '/') + '#' + id;
       if (seen[url]) return;
       seen[url] = true;
       searchIndex.push({ title: h.textContent.trim(), url: url, category: 'Sur cette page' });
@@ -115,46 +140,4 @@
       }
     });
   }
-
-  // Mobile sidebar toggle via hamburger menu (accessible via logo area on mobile)
-  // If needed, add a hamburger button
-  var logo = document.querySelector('.logo');
-  if (window.innerWidth <= 768 && logo) {
-    var hamburger = document.createElement('button');
-    hamburger.className = 'hamburger';
-    hamburger.setAttribute('aria-label', 'Menu');
-    hamburger.innerHTML = '<span></span><span></span><span></span>';
-    logo.parentNode.insertBefore(hamburger, logo);
-    hamburger.addEventListener('click', function () {
-      document.getElementById('sidebar').classList.toggle('open');
-    });
-  }
-
-  // Add hamburger styles dynamically
-  var style = document.createElement('style');
-  style.textContent = `
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .hamburger span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: var(--color-text);
-      border-radius: 2px;
-      transition: transform 0.2s;
-    }
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-    }
-  `;
-  document.head.appendChild(style);
 })();
