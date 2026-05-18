@@ -4,7 +4,7 @@ title: PN Scripts FiveM
 ---
 
 <div class="hero">
-  <span class="hero-icon">⚡</span>
+  <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="PN Project Nexus" class="hero-img">
   <h1>PN Scripts FiveM</h1>
   <p>Documentation officielle des scripts FiveM développés par Project Nexus. Retrouvez guides d'installation, configuration et références techniques.</p>
 </div>
