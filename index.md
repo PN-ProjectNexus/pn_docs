@@ -11,24 +11,9 @@ title: Project Nexus Docs
 
 <div class="cards-grid">
   <a href="{{ '/categories/pndoc/' | relative_url }}" class="card">
-    <span class="card-icon">D</span>
+    <span class="card-icon">📘</span>
     <h3>PNDOC</h3>
     <p>Vue d'ensemble du template, installation, structure et deploiement GitHub Pages.</p>
-  </a>
-  <a href="{{ '/categories/pndoc/installation/' | relative_url }}" class="card">
-    <span class="card-icon">I</span>
-    <h3>Installation</h3>
-    <p>Recuperez la release du template et preparez la configuration de base.</p>
-  </a>
-  <a href="{{ '/categories/pndoc/deploiement-github-pages/' | relative_url }}" class="card">
-    <span class="card-icon">G</span>
-    <h3>Deploiement</h3>
-    <p>Publiez la documentation avec GitHub Pages depuis la branche main.</p>
-  </a>
-  <a href="{{ '/categories/pndoc/ajouter-une-documentation/' | relative_url }}" class="card">
-    <span class="card-icon">+</span>
-    <h3>Prochaines docs</h3>
-    <p>Ajoutez ensuite un dossier par script ou mapping FiveM.</p>
   </a>
 </div>
 
