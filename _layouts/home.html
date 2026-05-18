@@ -8,8 +8,8 @@
     <main class="content" id="main-content">
       <div class="content-inner">
         {{ content }}
+        {% include footer.html %}
       </div>
-      {% include footer.html %}
     </main>
   </div>
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>

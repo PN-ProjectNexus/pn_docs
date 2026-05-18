@@ -172,8 +172,6 @@ hr {
 }
 
 .header-inner {
-  max-width: 1440px;
-  margin: 0 auto;
   padding: 0 1.5rem;
   height: 100%;
   display: flex;
@@ -364,9 +362,6 @@ hr {
   display: flex;
   margin-top: var(--header-height);
   min-height: calc(100vh - var(--header-height));
-  max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
 }
 
@@ -375,9 +370,10 @@ hr {
   flex-shrink: 0;
   border-right: 1px solid var(--color-border);
   background: var(--color-surface);
-  position: sticky;
+  position: fixed;
   top: var(--header-height);
-  height: calc(100vh - var(--header-height));
+  left: 0;
+  bottom: 0;
   overflow-y: auto;
   z-index: 50;
   transition: transform 0.3s ease;
@@ -498,8 +494,17 @@ hr {
 
 .content {
   flex: 1;
+  margin-left: var(--sidebar-width);
   min-width: 0;
   padding: 2rem 2.5rem;
+  /* Add padding equal to sidebar width on the right to balance the layout and center the content-inner in the viewport */
+  padding-right: calc(var(--sidebar-width) + 2.5rem);
+}
+
+@media (max-width: 1200px) {
+  .content {
+    padding-right: 2.5rem;
+  }
 }
 
 .content-inner {
