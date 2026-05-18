@@ -1,0 +1,32 @@
+title: PN Project Nexus — Docs FiveM
+description: Documentation complète des scripts FiveM de Project Nexus
+
+url: "https://pn-projectnexus.github.io"
+baseurl: "/pn_docs"
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+defaults:
+  - scope:
+      path: "categories"
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+
+permalink: /:categories/:title:output_ext
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .gitignore

@@ -1,0 +1,45 @@
+- title: Démarrer
+  icon: 🚀
+  folder: getting-started
+  pages:
+    - title: Prérequis
+      url: /categories/getting-started/prerequis
+    - title: Installation
+      url: /categories/getting-started/installation
+    - title: Déploiement
+      url: /categories/getting-started/deploiement
+
+- title: Resources
+  icon: 📦
+  folder: resources
+  pages:
+    - title: Aperçu des scripts
+      url: /categories/resources/apercu
+    - title: Anti-Cheat
+      url: /categories/resources/anti-cheat
+    - title: Véhicules
+      url: /categories/resources/vehicules
+    - title: UI Pack
+      url: /categories/resources/ui-pack
+
+- title: Configuration
+  icon: ⚙️
+  folder: configuration
+  pages:
+    - title: Fichiers de config
+      url: /categories/configuration/fichiers
+    - title: Variables serveur
+      url: /categories/configuration/variables
+    - title: Personnalisation
+      url: /categories/configuration/personnalisation
+
+- title: Développement
+  icon: 🛠️
+  folder: development
+  pages:
+    - title: Hooks & Events
+      url: /categories/development/hooks
+    - title: Base de données
+      url: /categories/development/database
+    - title: Contribution
+      url: /categories/development/contribution

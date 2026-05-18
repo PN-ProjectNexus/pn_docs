@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% include head.html %}
+<body>
+  {% include header.html %}
+  <div class="layout">
+    {% include sidebar.html %}
+    <main class="content" id="main-content">
+      <div class="content-inner">
+        <div class="page-header">
+          {% assign crumbs = page.url | split: '/' %}
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="{{ '/' | relative_url }}">Accueil</a>
+            {% for crumb in crumbs offset:1 %}
+              {% if forloop.last %}
+                <span class="separator">/</span>
+                <span aria-current="page">{{ page.title }}</span>
+              {% else %}
+                <span class="separator">/</span>
+                <a href="{{ '/' | relative_url }}{% for c in crumbs limit:forloop.index offset:1 %}{{ c }}/{% endfor %}">{{ crumb | replace: '-', ' ' | capitalize }}</a>
+              {% endif %}
+            {% endfor %}
+          </nav>
+          <h1 class="page-title">{{ page.title }}</h1>
+        </div>
+        {{ content }}
+      </div>
+      {% include footer.html %}
+    </main>
+  </div>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

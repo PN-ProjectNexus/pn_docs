@@ -1,0 +1,38 @@
+<nav class="sidebar" id="sidebar" aria-label="Navigation principale">
+  <div class="sidebar-inner">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">
+          <span class="nav-icon">🏠</span>
+          Accueil
+        </a>
+      </li>
+      {% for category in site.data.navigation %}
+      <li class="nav-item has-children">
+        <button class="nav-toggle" aria-expanded="true" data-target="{{ category.folder }}">
+          <span class="nav-icon">{{ category.icon }}</span>
+          {{ category.title }}
+          <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="subnav">
+          {% capture overview_url %}/categories/{{ category.folder }}/{% endcapture %}
+          <li class="subnav-item">
+            <a href="{{ '/categories/' | append: category.folder | relative_url }}" class="subnav-link {% if page.url == overview_url %}active{% endif %}">
+              Vue d'ensemble
+            </a>
+          </li>
+          {% for page_item in category.pages %}
+          <li class="subnav-item">
+            <a href="{{ page_item.url | relative_url }}" class="subnav-link {% if page.url == page_item.url %}active{% endif %}">
+              {{ page_item.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
