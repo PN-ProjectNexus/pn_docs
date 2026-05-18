@@ -1,34 +1,34 @@
 ---
 layout: home
-title: PN Scripts FiveM
+title: Project Nexus Docs
 ---
 
 <div class="hero">
-  <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="PN Project Nexus" class="hero-img">
-  <h1>PN Scripts FiveM</h1>
-  <p>Documentation officielle des scripts FiveM développés par Project Nexus. Retrouvez guides d'installation, configuration et références techniques.</p>
+  <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="Project Nexus" class="hero-img">
+  <h1>Project Nexus Docs</h1>
+  <p>Documentation officielle Project Nexus pour les scripts, mappings et ressources FiveM. Commencez par PNDOC pour installer le template et publier le site avec GitHub Pages.</p>
 </div>
 
 <div class="cards-grid">
-  <a href="{{ '/categories/getting-started/' | relative_url }}" class="card">
-    <span class="card-icon">🚀</span>
-    <h3>Démarrer</h3>
-    <p>Prérequis, installation et déploiement de nos scripts sur votre serveur.</p>
+  <a href="{{ '/categories/pndoc/' | relative_url }}" class="card">
+    <span class="card-icon">D</span>
+    <h3>PNDOC</h3>
+    <p>Vue d'ensemble du template, installation, structure et deploiement GitHub Pages.</p>
   </a>
-  <a href="{{ '/categories/resources/' | relative_url }}" class="card">
-    <span class="card-icon">📦</span>
-    <h3>Resources</h3>
-    <p>Catalogue complet de nos scripts : Anti-Cheat, Véhicules, UI Pack et plus.</p>
+  <a href="{{ '/categories/pndoc/installation/' | relative_url }}" class="card">
+    <span class="card-icon">I</span>
+    <h3>Installation</h3>
+    <p>Recuperez la release du template et preparez la configuration de base.</p>
   </a>
-  <a href="{{ '/categories/configuration/' | relative_url }}" class="card">
-    <span class="card-icon">⚙️</span>
-    <h3>Configuration</h3>
-    <p>Personnalisez chaque script selon les besoins de votre serveur.</p>
+  <a href="{{ '/categories/pndoc/deploiement-github-pages/' | relative_url }}" class="card">
+    <span class="card-icon">G</span>
+    <h3>Deploiement</h3>
+    <p>Publiez la documentation avec GitHub Pages depuis la branche main.</p>
   </a>
-  <a href="{{ '/categories/development/' | relative_url }}" class="card">
-    <span class="card-icon">🛠️</span>
-    <h3>Développement</h3>
-    <p>Hooks, events, base de données et guide de contribution.</p>
+  <a href="{{ '/categories/pndoc/ajouter-une-documentation/' | relative_url }}" class="card">
+    <span class="card-icon">+</span>
+    <h3>Prochaines docs</h3>
+    <p>Ajoutez ensuite un dossier par script ou mapping FiveM.</p>
   </a>
 </div>
 
@@ -39,6 +39,6 @@ title: PN Scripts FiveM
   </a>
   <a href="#" class="btn-hero btn-hero-tebex btn-hero-disabled">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-    Tebex — À venir
+    Tebex - A venir
   </a>
 </div>
