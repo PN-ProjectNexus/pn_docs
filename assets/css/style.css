@@ -444,6 +444,7 @@ hr {
 
 .content-inner {
   max-width: 780px;
+  margin: 0 auto;
 }
 
 .page-header {
