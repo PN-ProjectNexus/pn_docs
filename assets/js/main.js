@@ -38,19 +38,32 @@
   var searchTimeout;
 
   function buildSearchIndex() {
-    var items = document.querySelectorAll('.subnav-link');
+    // Collect all sidebar links
+    var items = document.querySelectorAll('.subnav-link, .nav-link');
     var seen = {};
     items.forEach(function (el) {
       var title = el.textContent.trim();
       var url = el.getAttribute('href');
-      if (url && !seen[url]) {
-        seen[url] = true;
-        // Find parent category
-        var parentToggle = el.closest('.nav-item');
-        var category = parentToggle ? parentToggle.querySelector('.nav-toggle') : null;
-        var categoryName = category ? category.textContent.trim().replace(/[☀️🌙🚀📖⚙️🔍🏠\s]/g, '').trim() : '';
-        searchIndex.push({ title: title, url: url, category: categoryName });
+      if (!url || seen[url] || url === '#' || url === '') return;
+      var catEl = el.closest('.nav-item');
+      var catBtn = catEl ? catEl.querySelector('.nav-toggle') : null;
+      var catName = '';
+      if (catBtn) {
+        var raw = catBtn.textContent;
+        // Clean: keep only letters, digits, spaces
+        catName = raw.replace(/[^a-zA-Z0-9\u00C0-\u024F\s]/g, '').trim();
       }
+      seen[url] = true;
+      searchIndex.push({ title: title, url: url, category: catName });
+    });
+    // Also index page headings as extra results
+    document.querySelectorAll('.content h2, .content h3').forEach(function (h) {
+      var id = h.getAttribute('id');
+      if (!id) return;
+      var url = window.location.pathname + '#' + id;
+      if (seen[url]) return;
+      seen[url] = true;
+      searchIndex.push({ title: h.textContent.trim(), url: url, category: 'Sur cette page' });
     });
   }
 
@@ -65,7 +78,8 @@
     }).slice(0, 10);
 
     if (results.length === 0) {
-      searchResults.classList.add('hidden');
+      searchResults.innerHTML = '<div class="search-result-item" style="color:var(--color-text-secondary);font-size:0.875rem;padding:0.625rem 0.875rem">Aucun résultat</div>';
+      searchResults.classList.remove('hidden');
       return;
     }
 
@@ -88,7 +102,7 @@
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(function () {
         performSearch(searchInput.value.trim());
-      }, 200);
+      }, 150);
     });
     document.addEventListener('click', function (e) {
       if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {

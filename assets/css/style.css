@@ -196,7 +196,7 @@ hr {
   color: var(--color-text);
 }
 .logo-img {
-  height: 32px;
+  height: 28px;
   width: auto;
   border-radius: 4px;
 }
@@ -473,7 +473,6 @@ hr {
   margin-left: var(--sidebar-width);
   min-width: 0;
   padding: 2rem 2.5rem;
-  max-width: 960px;
 }
 
 .content-inner {
@@ -528,7 +527,7 @@ hr {
   display: block;
 }
 .hero-img {
-  max-height: 120px;
+  max-height: 80px;
   width: auto;
   margin-bottom: 1rem;
 }
@@ -546,6 +545,58 @@ hr {
   color: var(--color-text-secondary);
   max-width: 600px;
   margin: 0 auto 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.btn-hero:hover {
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.btn-hero-discord {
+  background: #5865f2;
+  color: #fff;
+  border-color: #5865f2;
+}
+.btn-hero-discord:hover {
+  background: #4752c4;
+  border-color: #4752c4;
+  color: #fff;
+}
+
+.btn-hero-tebex {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+.btn-hero-tebex:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-hero-disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
 }
 
 .cards-grid {
